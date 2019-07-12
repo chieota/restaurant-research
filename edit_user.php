@@ -1,7 +1,7 @@
 <?php
+    include 'admin/header/header.php';
     require_once "classes/User.php";
 
-    //create an instance
     $user = new User;
     $id = $_GET['user_id'];
     $get_user = $user->selectOne($id);
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h4 class="bg-primary py-3">Add User</h4>
+    <h4 class="py-3">Edit User</h4>
     <div class="container">
         <form action="user_action.php?action=update" method="post">
             <input  type="hidden" name="user_id" value="<?php echo $_GET['user_id']?>">
@@ -31,6 +31,18 @@
             <div class="form-group">
                 <label for="">Email</label>
                 <input type="email" name="email" class="form-control" value="<?php echo $get_user['email']?>">
+            </div>
+            <div class="form-group">
+                <label for="">Gender</label>
+                <input type="text" name="gender" class="form-control" value="<?php echo $get_user['gender']?>">
+            </div>
+            <div class="form-group">
+                <label for="">Nationality</label>
+                <input type="text" name="nationality" class="form-control" value="<?php echo $get_user['nationality']?>">
+            </div>
+            <div class="form-group">
+                <label for="">Comment</label>
+                <input type="text" name="comment" class="form-control" value="<?php echo $get_user['comment']?>">
             </div>
 
             <input type="submit" value="Edit" name="action" class="btn btn-primary">

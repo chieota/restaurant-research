@@ -30,6 +30,8 @@
                   <th>ID</th>
                   <th>Username</th>
                   <th>Email</th>
+                  <th>Gender</th>
+                  <th>Nationality</th>
                   <th>Action</th>
               </tr>
           </thead>
@@ -44,6 +46,8 @@
                     echo "<td>".$row['user_id']."</td>";
                     echo "<td>".$row['username']."</td>";
                     echo "<td>".$row['email']."</td>";
+                    echo "<td>".$row['gender']."</td>";
+                    echo "<td>".$row['nationality']."</td>";
                     echo "<td>
                     <a href='edit_user.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                     ?>

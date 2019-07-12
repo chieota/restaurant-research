@@ -6,10 +6,14 @@
 
     if($_GET['action'] == 'add'){
 
+        $user_id = $_POST['user_id'];
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $result = $user->save($username,$email,$password);
+        $gender = $_POST['gender'];
+        $nationality = $_POST['nationality'];
+        $comment = $_POST['comment'];
+        $result = $user->save($username,$email,$password,$gender,$nationality,$comment);
 
         if($result){
             echo "<script>window.location.replace('users.php');</script>";
@@ -23,7 +27,11 @@
         $user_id = $_POST['user_id'];
         $username = $_POST['username'];
         $email = $_POST['email'];
-        $result = $user->update($user_id,$username,$email);
+        $gender = $_POST['gender'];
+        $nationality = $_POST['nationality'];
+        $comment = $_POST['comment'];
+
+        $result = $user->update($user_id,$username,$email,$gender,$nationality,$comment);
 
         if($result){
             echo "<script>window.location.replace('users.php'); </script>";

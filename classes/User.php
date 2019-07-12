@@ -11,7 +11,7 @@
             if($result->num_rows == 1){
                 $row = $result->fetch_assoc();
                 $_SESSION['user_id'] = $row['user_id'];
-                echo "<script>window.location.replace('profile.php');</script>";
+                echo "<script>window.location.replace('users.php');</script>";
             }else{
                 echo "<p class='text-danger'>Incalid Usernameor Password</p>";
             }
@@ -48,11 +48,11 @@
             }
         }
 
-        public function save($username, $password, $email){
+        public function save($username, $email, $password,$gender,$nationality,$comment){
 
             $new_password = md5($password);
-            $sql = "INSERT INTO users(username, email, password)
-                    VALUES('$username','$email','$new_password')";
+            $sql = "INSERT INTO users(username, email, password,gender,nationality,comment)
+                    VALUES('$username','$email','$new_password','$gender','$nationality','$comment')";
             //execute or run the query
             $result = $this->conn->query($sql);
 
@@ -64,8 +64,8 @@
          }
         
 
-        public function update($id, $username, $email){
-            $sql = "UPDATE users SET username='$username', email='$email' WHERE user_id=$id";
+        public function update($id, $username, $email,$gender,$nationality,$comment){
+            $sql = "UPDATE users SET username='$username', email='$email',gender='$gender',nationality='$nationality',comment='comment' WHERE user_id=$id";
             //execute or run the query
             $result = $this->conn->query($sql);
             if($result){
