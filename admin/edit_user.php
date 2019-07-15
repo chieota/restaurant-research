@@ -1,6 +1,5 @@
 <?php
-    include 'admin/header/header.php';
-    require_once "classes/User.php";
+    require_once "../classes/User.php";
 
     $user = new User;
     $id = $_GET['user_id'];

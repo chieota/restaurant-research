@@ -11,7 +11,7 @@
             if($result->num_rows == 1){
                 $row = $result->fetch_assoc();
                 $_SESSION['user_id'] = $row['user_id'];
-                echo "<script>window.location.replace('users.php');</script>";
+                echo "<script>window.location.replace('admin/users.php');</script>";
             }else{
                 echo "<p class='text-danger'>Incalid Usernameor Password</p>";
             }

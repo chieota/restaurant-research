@@ -1,6 +1,5 @@
 <?php
-   require_once "classes/User.php";
-   //Create the instance/object
+   require_once "../classes/User.php";
    $users = new User;
 
 
