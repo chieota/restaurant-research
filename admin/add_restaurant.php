@@ -12,16 +12,33 @@
   <body>
       <div class="container">
           <div class="row justify-content-center">
+              <div class="col-9 mt-5">
               <div class="card">
-                  <div class="card-header py-5 bg-success">
+                  <div class="card-header py-5 mb-2 bg-success">
                       <h3 class="text-light text-center py-3">Add Restaurant</h3>
                   </div>
+                  <form action="restaurant_action.php?action=add" method="post">
                   <div class="form-group">
                       <input type="text" class="form-control" placeholder="Restaurant Name" name="restaurant_name">
                   </div>
                   <div class="form-group">
-                  <label >Nationality</label><br>
-                    <select name="nationality">
+                      <label >Genre</label>
+                      <select name="genre" id="" class="form-control">
+                        <?php
+                          require_once "../classes/Genre.php";
+                          $genre = new Genre;
+                          $get_genres = $genre->selectAll();
+                          foreach($get_genres as $key => $row){
+                            $genre_id = $row['genre_id'];
+                            $genre_name = $row['genre_name'];
+                            echo "<option value='$genre_id'>$genre_name</option>";
+                          }
+                        ?>
+                      </select>
+                      </div>
+                  <div class="form-group">
+                  <label >Country</label><br>
+                    <select name="country">
                         <option value="">-- select one --</option>
                         <option value="afghan">Afghan</option>
                         <option value="albanian">Albanian</option>
@@ -217,14 +234,21 @@
                         <option value="zimbabwean">Zimbabwean</option>
                     </select>   
                   </div>
-                  <div class="form-group">
-                     <label >Genre</label><br>
-                     <select name="genre">
-                        <option value="">-- select one --</option>
-                        <option value="afghan"></option>
-                        <option value="albanian">Albanian</option>
-                        <option value="algerian">Algerian</option>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="City" name="city">
+                      </div>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Address" name="address">
+                      </div>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Bussinessday" name="bussinessday">
+                      </div>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Budget" name="budget">
+                      </div>
 
+                       <input type="submit" value="Add" name="action" class="btn btn-primary">
+                      </form>
                   </div>
               </div>
           </div>

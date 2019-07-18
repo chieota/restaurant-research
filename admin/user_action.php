@@ -1,7 +1,6 @@
 <?php
-    require_once "classes/User.php";
+    require_once "../classes/User.php";
 
-    //create instance
     $user = new User;
 
     if($_GET['action'] == 'add'){
@@ -16,7 +15,7 @@
         $result = $user->save($username,$email,$password,$gender,$nationality,$comment);
 
         if($result){
-            echo "<script>window.location.replace('admin/users.php');</script>";
+            echo "<script>window.location.replace('users.php');</script>";
 
     }else{
         echo "Error!!";
@@ -34,7 +33,7 @@
         $result = $user->update($user_id,$username,$email,$gender,$nationality,$comment);
 
         if($result){
-            echo "<script>window.location.replace('admin/users.php'); </script>";
+            echo "<script>window.location.replace('users.php'); </script>";
         }
     }
 
@@ -42,7 +41,7 @@
         $user_id = $_GET['user_id'];
         $result = $user->delete($user_id);
         if($result){
-            echo "<script> window.location.replace('admin/users.php'); </script>";
+            echo "<script> window.location.replace('users.php'); </script>";
         }
     }
 ?>

@@ -34,7 +34,7 @@
                   <th>Address</th>
                   <th>Bussinessday</th>
                   <th>Budget</th>
-                  <th>Score</th>
+                  <th>Action</th>
               </tr>
           </thead>
           <tbody>
@@ -45,16 +45,15 @@
                      foreach($get_restaurants as $key => $row){
                         $id = $row['restaurant_id'];
                         echo "<tr>";
-                        echo "<td>".$row['restaurant_id']."<td>";
-                        echo "<td>".$row['restaurant_name']."<td>";
-                        echo "<td>".$row['username']."<td>";
-                        echo "<td>".$row['genre']."<td>";
-                        echo "<td>".$row['country']."<td>";
-                        echo "<td>".$row['city']."<td>";
-                        echo "<td>".$row['address']."<td>";
-                        echo "<td>".$row['bussinessday']."<td>";
-                        echo "<td>".$row['budget']."<td>";
-                        echo "<td>".$row['score']."<td>";                        
+                        echo "<td>".$row['restaurant_id']."</td>";
+                        echo "<td>".$row['restaurant_name']."</td>";
+                        echo "<td>".$row['username']."</td>";
+                        echo "<td>".$row['genre']."</td>";
+                        echo "<td>".$row['country']."</td>";
+                        echo "<td>".$row['city']."</td>";
+                        echo "<td>".$row['address']."</td>";
+                        echo "<td>".$row['bussinessday']."</td>";
+                        echo "<td>".$row['budget']."</td>";                      
                         echo "<td>
                         <a href='edit_restaurant.php?restaurant_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                         ?>

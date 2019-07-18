@@ -27,10 +27,10 @@
             }
         }
         
-        public function save($restaurant_name,$genre,$country,$city,$address,$bussinessday,$budget,$score){
+        public function save($restaurant_name,$genre,$country,$city,$address,$bussinessday,$budget,$user_id){
 
-            $sql = "INSERT INTO restaurants(restaurant_name,genre,country,city,address,bussinessday,budget,score)
-                    VALUES('$restaurant_name','$genre','$country','$city','$address','$bussinessday','$budget','$score')";
+            $sql = "INSERT INTO restaurants(restaurant_name,user_id,genre,country,city,address,bussinessday,budget)
+                    VALUES('$restaurant_name','$user_id','$genre','$country','$city','$address','$bussinessday','$budget')";
 
                     $result = $this->conn->query($sql);
                     if($result){
@@ -39,9 +39,9 @@
                         echo "Error:".$this->conn->error;
                     }
         }
-        public function update($id, $restaurant_name, $genre,$country,$city,$address,$bussinessday,$budget,$score){
+        public function update($id, $restaurant_name, $genre,$country,$city,$address,$bussinessday,$budget){
             $sql = "UPDATE restaurants SET restaurant_name='$restaurant_name', genre='$genre', country='$country',
-                    city='$city', address='$address' ,bussinessday='$bussinessday',budget='$budget',score='$score'
+                    city='$city', address='$address' ,bussinessday='$bussinessday',budget='$budget'
                     WHERE restaurant_id=$id";
             //execute or run the query
             $result = $this->conn->query($sql);

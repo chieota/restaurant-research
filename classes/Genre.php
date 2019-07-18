@@ -1,6 +1,6 @@
 <?php
     require_once "Config.php";
-    class Restaurant extends Config{
+    class Genre extends Config{
 
         public function selectAll(){
             $sql = "SELECT * FROM genres";

@@ -17,7 +17,7 @@
                     <div class="card-header py-5 my-2 bg-success">
                         <h3 class="text-light text-center py-3">Add User</h3>
                     </div>
-                    <form action="" method="post">
+                    <form action="user_action.php?action=add" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" Placeholder="Username">
                         </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                         <label >Nationality</label><br>
-                    <select name="nationality">
+                        <select name="nationality">
                         <option value="">-- select one --</option>
                         <option value="afghan">Afghan</option>
                         <option value="albanian">Albanian</option>

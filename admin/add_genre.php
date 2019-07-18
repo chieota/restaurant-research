@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Add Genre</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,9 +17,9 @@
             <div class="card-header py-5 my-2 bg-success">
                <h3 class="text-light text-center py-3">Add Genre</h3>
             </div>
-        <form action=""method="post">
+        <form action="genre_action.php?action=add" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Genre">
+          <input type="text" class="form-control" placeholder="Genre" name="genre_name">
         </div>
         <input type="submit" value="Add" name="action" class="btn btn-primary">
         </form>
