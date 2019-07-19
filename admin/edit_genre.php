@@ -21,13 +21,12 @@
     <div class="container">
         <form action="genre_action.php?action=update" method="post">
             <div class="row justify-content-center">
-                <div class="col-6 mt-5">
+                <div class="col-9 mt-5">
                     <div class="card">
                         <div class="card-header py-5 bg-success">
                             <h3 class="text-light text-center py-3">Edit Genre</h3>
                         </div>
                         <div class="card-body">
-                            <form method="post">
                             <input type="hidden" name="genre_id" value="<?php echo $_GET['genre_id']?>">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Genre Name" name="genre_name" value="<?php echo $get_genre['genre_name']?>">

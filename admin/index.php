@@ -1,5 +1,11 @@
-<?php require_once "header/header.php"; ?> 
-        <!-- <img src="images/slider.jpg" class="img-fluid" alt="#"> -->
+<?php 
+
+    require_once "header/header.php";
+
+?>
+
+<section class="slider d-flex align-items-center">
+        <!-- <img src="images/slider.jpg" class="img-fluid" alt="#">  -->
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12">
@@ -18,14 +24,17 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <input type="text" placeholder="Where are you in?" class="btn-group1">
                                         <select name="genre" id="" class="btn-group2">
-                                            <option value="genre">Genre</option>                                            
-                                            <option value="japanese">Japanese</option>
-                                            <option value="chinese">Chinase</option>
-                                            <option value="korean">Korean</option>
-                                            <option value="italian">Italian</option>
-                                            <option value="french">French</option>
-                                            <option value="spanish">Spanish</option>
-                                            <option value="turkish">Trukish</option>
+                                            <?php
+
+                                                require_once "../classes/Genre.php";
+                                                $genre = new Genre;
+                                                $get_genre =$genre->selectAll();
+                                                foreach($get_genres as $key => $row){
+                                                    $genre_id = $row['genre_id'];
+                                                    $genre_name = $row['ganre_name'];
+                                                    echo "<option value='$genre_id'>$genre_name</option>";
+                                                }
+                                            ?>
                                         </select>
                                         <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
                                     </div>
@@ -45,7 +54,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="styled-heading">
-                        <h3>What do you need to find?</h3>
+                        <h3>Which city are you in?</h3>
                     </div>
                 </div>
             </div>
@@ -54,10 +63,10 @@
                     <div class="find-place-img_wrap">
                         <div class="grid">
                             <figure class="effect-ruby">
-                                <img src="images/find-place1.jpg" class="img-fluid" alt="img13" />
+                                <img src="images/find-place1.jpg" height="500px" alt="img13" />
                                 <figcaption>
-                                    <h5>Nightlife </h5>
-                                    <p>385 Listings</p>
+                                    <h5>New York</h5>
+                                    <p>ーーーーーー</p>
                                 </figcaption>
                             </figure>
                         </div>
@@ -69,10 +78,10 @@
                             <div class="find-place-img_wrap">
                                 <div class="grid">
                                     <figure class="effect-ruby">
-                                        <img src="images/find-place2.jpg" class="img-fluid" alt="img13" />
+                                        <img src="images/find-place2.jpg" height="220px" alt="img13" />
                                         <figcaption>
-                                            <h5>Restaurants</h5>
-                                            <p>210 Listings</p>
+                                            <h5>Tokyo</h5>
+                                            <p>----------</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -84,10 +93,10 @@
                             <div class="find-place-img_wrap">
                                 <div class="grid">
                                     <figure class="effect-ruby">
-                                        <img src="images/find-place3.jpg" class="img-fluid" alt="img13" />
+                                        <img src="images/find-place3.jpg" height="250px" alt="img13" />
                                         <figcaption>
-                                            <h5>Outdoors </h5>
-                                            <p>114 Listings</p>
+                                            <h5>Spain</h5>
+                                            <p>------------</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -101,10 +110,10 @@
                             <div class="find-place-img_wrap">
                                 <div class="grid">
                                     <figure class="effect-ruby">
-                                        <img src="images/find-place4.jpg" class="img-fluid" alt="img13" />
+                                        <img src="images/find-place4.jpg" height="240" alt="img13" />
                                         <figcaption>
-                                            <h5>Hotels </h5>
-                                            <p>577 Listings</p>
+                                            <h5>London</h5>
+                                            <p>---------</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -116,10 +125,10 @@
                             <div class="find-place-img_wrap">
                                 <div class="grid">
                                     <figure class="effect-ruby">
-                                        <img src="images/find-place5.jpg" class="img-fluid" alt="img13" />
+                                        <img src="images/find-place5.jpg" height="230px" alt="img13" />
                                         <figcaption>
-                                            <h5>Art & Culture </h5>
-                                            <p>79 Listings</p>
+                                            <h5>Paris</h5>
+                                            <p></p>
                                         </figcaption>
                                     </figure>
                                 </div>

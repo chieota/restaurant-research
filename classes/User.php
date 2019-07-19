@@ -48,11 +48,11 @@
             }
         }
 
-        public function save($username, $email, $password,$gender,$nationality,$comment){
+        public function save($username, $email, $password,$nationality,$comment){
 
             $new_password = md5($password);
             $sql = "INSERT INTO users(username, email, password,gender,nationality,comment)
-                    VALUES('$username','$email','$new_password','$gender','$nationality','$comment')";
+                    VALUES('$username','$email','$new_password','$nationality','$comment')";
             //execute or run the query
             $result = $this->conn->query($sql);
 
@@ -64,8 +64,8 @@
          }
         
 
-        public function update($id, $username, $email,$gender,$nationality,$comment){
-            $sql = "UPDATE users SET username='$username', email='$email',gender='$gender',nationality='$nationality',comment='comment' WHERE user_id=$id";
+        public function update($id, $username, $email,$nationality,$comment){
+            $sql = "UPDATE users SET username='$username', email='$email', nationality='$nationality',comment='comment' WHERE user_id=$id";
             //execute or run the query
             $result = $this->conn->query($sql);
             if($result){
@@ -85,6 +85,26 @@
             echo "Error:".$this->conn->error;
         }
     }
+    public function login_required_admin()
+    {
+        if (!isset($_SESSION['login'])) {
+            echo "<script>window.location.replace(admin.users.php)</script>";
+
+        } else {
+            $user_id = $_SESSION['user_id'];
+            $sql = "SELECT * FROM login WHERE user_id = '$user_id'";
+            $result = $this->conn->query($sql);
+            if ($result->num_rows > 0) {
+
+                $row = $result->fetch_assoc();
+
+                if ($row['status'] == 'u') {
+                    $this->redirect_js('javascript:history.go(-1)');
+                }
+            }
+
+        }
+    }   
 
     }
 

@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+include_once '../classes/User.php';
+$user = new User;
+$user->login_required_admin();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +43,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand" href="index.html">Gourmet Advisor</a>
+                            <a class="navbar-brand" href="index.php">Gourmet Advisor</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-menu"></span>
               </button>
@@ -62,7 +71,6 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" href="#">Add Post</a>
                                             <a class="dropdown-item" href="#">Edit Post</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -77,12 +85,6 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="#">About</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Blog</a>
-                                    </li>
                                     <li><a href="#" class="btn btn-outline-light top-btn"><i class="fas fa-user-circle mr-2"></i>profile</span> </a></li>
                                 </ul>
                             </div>
@@ -93,6 +95,5 @@
         </div>
     </div>
     <!-- SLIDER -->
-    <section class="slider d-flex align-items-center">
         <!-- <img src="images/slider.jpg" class="img-fluid" alt="#"> -->
 
