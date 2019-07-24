@@ -3,7 +3,6 @@
    require_once "../classes/User.php";
    $users = new User;
 
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,6 +30,7 @@
                   <th>Username</th>
                   <th>Email</th>
                   <th>Nationality</th>
+                  <th>User type</th>
                   <th>Action</th>
               </tr>
           </thead>
@@ -46,6 +46,7 @@
                     echo "<td>".$row['username']."</td>";
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['nationality']."</td>";
+                    echo "<td>".$row['user_type']."</td>";
                     echo "<td>
                     <a href='edit_user.php?user_id=$id' class='btn btn-info btn-sm'>Edit</a>";
                     ?>

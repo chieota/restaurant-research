@@ -11,9 +11,13 @@
             if($result->num_rows == 1){
                 $row = $result->fetch_assoc();
                 $_SESSION['user_id'] = $row['user_id'];
-                echo "<script>window.location.replace('admin/users.php');</script>";
+                if($row['user_type'] == 'admin'){
+                    echo "<script>window.location.replace('admin.users.php');</script>";
+                }elseif($row['user_type'] == 'user'){
+                    echo "<script>window.location.replace('index.php');</script>";
             }else{
-                echo "<p class='text-danger'>Incalid Usernameor Password</p>";
+                echo "Error.";
+            }
             }
         }
         public function selectAll(){

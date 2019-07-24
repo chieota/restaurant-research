@@ -27,10 +27,10 @@
             }
         }
         
-        public function save($restaurant_name,$genre,$country,$city,$address,$bussinessday,$budget,$user_id){
+        public function save($restaurant_name,$genre,$city,$address,$bussinessday,$budget,$user_id){
 
-            $sql = "INSERT INTO restaurants(restaurant_name,user_id,genre,country,city,address,bussinessday,budget)
-                    VALUES('$restaurant_name','$user_id','$genre','$country','$city','$address','$bussinessday','$budget')";
+            $sql = "INSERT INTO restaurants(restaurant_name,user_id,genre,city,address,bussinessday,budget)
+                    VALUES('$restaurant_name','$user_id','$genre','$city','$address','$bussinessday','$budget')";
 
                     $result = $this->conn->query($sql);
                     if($result){
@@ -63,6 +63,18 @@
         }
     }
 
+        public function searchResult($city_id,$genre_id){
+            $sql = "SELECT * FROM restaurants WHERE city='$city_id' AND genre='$genre_id'";
+            $result = $this->conn->query($sql);
+            $rows = array();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $rows[] = $row;
+                }return $rows;
+            }else{
+                return false;
+            }
+        }
     }
 
 ?>

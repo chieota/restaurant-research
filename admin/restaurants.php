@@ -1,11 +1,3 @@
-<?php
-    require_once "header/header.php";
-
-    require_once "../classes/Restaurant.php";
-    $restaurants = new Restaurant;
-?>
-
-
   <body>
     <section>
       <h2 class="mr-3">Restaurant List</h2>
@@ -16,7 +8,6 @@
                   <th>Restaurant Name</th>
                   <th>Added by</th>
                   <th>Genre</th>
-                  <th>Country</th>
                   <th>City</th>
                   <th>Address</th>
                   <th>Bussinessday</th>
@@ -36,10 +27,10 @@
                         echo "<td>".$row['restaurant_name']."</td>";
                         echo "<td>".$row['username']."</td>";
                         echo "<td>".$row['genre']."</td>";
-                        echo "<td>".$row['country']."</td>";
                         echo "<td>".$row['city']."</td>";
                         echo "<td>".$row['address']."</td>";
-                        echo "<td>".$row['bussinessday']."</td>";
+                        echo "<td>".$row['tel']."<td>";
+                        echo "<td>".$row['url']."<td>";
                         echo "<td>".$row['budget']."</td>";                      
                         echo "<td>
                         <a href='edit_restaurant.php?restaurant_id=$id' class='btn btn-info btn-sm'>Edit</a>";
@@ -54,7 +45,7 @@
                     }else{
                       echo "<tr><td colspan='7' class='text-center'>Nothing to show</td></tr>";
                     }
-                    ?>
+                ?>
           </tbody>
       </table>
     </section>

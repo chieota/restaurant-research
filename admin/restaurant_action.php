@@ -7,13 +7,12 @@
     if($_GET['action'] == 'add'){
         $restaurant_name = $_POST['restaurant_name'];
         $genre = $_POST['genre'];
-        $country = $_POST['country'];
         $city = $_POST['city'];
         $address = $_POST['address'];
         $bussinessday = $_POST['bussinessday'];
         $budget = $_POST['budget'];
 
-        $result = $restaurant->save($restaurant_name,$genre,$country,$city,$address,$bussinessday,$budget,$user_id);
+        $result = $restaurant->save($restaurant_name,$genre,$city,$address,$bussinessday,$budget,$user_id);
             if($result){
                 echo "<script>window.location.replace('restaurants.php');</script>";
             }else{
@@ -23,13 +22,12 @@
         $restaurant_id = $_POST['restaurant_id'];
         $restaurant_name = $_POST['restaurant_name'];
         $genre = $_POST['genre'];
-        $country = $_POST['country'];
         $city = $_POST['city'];
         $address = $_POST['address'];
         $bussinessday = $_POST['bussinessday']; 
         $budget = $_POST['budget'];       
 
-        $result = $restaurant->update($restaurant_id,$restaurant_name,$genre,$country,$city,$address,$bussinessday,$budget);
+        $result = $restaurant->update($restaurant_id,$restaurant_name,$genre,$city,$address,$bussinessday,$budget);
         if($result){
             echo "<script>window.location.replace('restaurants.php');</script>";
         }

@@ -95,7 +95,7 @@
                                     <figure class="effect-ruby">
                                         <img src="images/find-place3.jpg" height="250px" alt="img13" />
                                         <figcaption>
-                                            <h5>Spain</h5>
+                                            <h5>Madorid</h5>
                                             <p>------------</p>
                                         </figcaption>
                                     </figure>
