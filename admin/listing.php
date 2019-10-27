@@ -26,7 +26,6 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <!--============================= HEADER =============================-->
     <div class="dark-bg sticky-top">

@@ -12,9 +12,9 @@
   <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6 mt-5">
+            <div class="col-9 mt-5">
                 <div class="card">
-                    <div class="card-header py-5 bg-success">
+                    <div class="card-header py-5 bg-dark">
                         <h3 class="text-light text-center py-3">Register</h3>
                     </div>
                     <div class="card-body">
@@ -29,16 +29,16 @@
                                 <input type="password" class="form-control" placeholder="Your password" name="password">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your gender" name="gender">
+                                <select name="user_type" class="form-control">
+                                     <option value='user' name="user">User</option>
+                                </select>
+                                <!-- <input type="option" class="form-control" placeholder="User" name="user_type">
+                                <section>
+                                    <option value="user"disabled>User</option>
+                                </section> -->
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your nationality" name="nationality">
-                            </div>
-                            <div class="form-group">
-                                <label for="">comment</label><br>
-                                <textarea name="comment" id="" cols="30" rows="5" class="form-control"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="register">Register</button>
+                            
+                            <button type="submit" class="btn btn-outline-danger btn-sm mt-3" name="register">Register</button>
                             <p class="float-right mt-3 text-muted">Already have an account 
                             <strong><a href="login.php" class="text-decoration text-dark">Log in</a></strong></p>
                         </form>
@@ -50,13 +50,11 @@
                                 $username = $_POST['username'];
                                 $email = $_POST['email'];
                                 $password = $_POST['password'];
-                                $gender = $_POST['gender'];
-                                $nationality = $_POST['nationality'];
-                                $comment = $_POST['comment'];
-                                $result = $user->save($username,$email,$password,$gender,$nationality,$comment);
+                                $user_type = $_POST['user_type'];
+                                $result = $user->save($username,$email,$password,$user_type);
 
                                 if($result){
-                                    echo "<script>window.location.replace('users.php');</script>";
+                                    echo "<script>window.location.replace('admin/users.php');</script>";
                                 }
                             }
 

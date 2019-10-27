@@ -7,7 +7,9 @@ Author: Surjith S M
    GLOBAL STYLES
    ============================================================== */
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Nunito', sans-serif;
+  
+}
 
 h1 {
   font-size: 72px;
@@ -69,7 +71,9 @@ p {
   top: 0;
   right: 0;
   left: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background:#343338;  
+}
 
 .nav-menu-2 {
   position: inherit; }
@@ -506,7 +510,9 @@ p {
    FOOTER
    ============================================================== */
 footer {
-  position: relative; }
+  position: relative;
+  bottom: 0; 
+}
 
 .copyright {
   text-align: center; }

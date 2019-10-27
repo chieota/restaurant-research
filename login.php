@@ -12,10 +12,9 @@
   <body>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-6 mt-5">
+        <div class="col-9 mt-5">
         <div class="card">
-
-          <div class="card-header py-5 bg-success">
+          <div class="card-header py-5 bg-dark">
           <h3 class="text-light text-center py-3">LOG IN</h3>    
           </div>
           <div class="card-body">
@@ -26,7 +25,7 @@
               <div class="form-group">
               <input type="password" name="password"class="form-control" placeholder="Your password">
               </div>
-              <button type="submit" class="btn btn-outline-success btn-sm mt-3" name="login">LOG IN</button>
+              <button type="submit" class="btn btn-outline-danger btn-sm mt-3" name="login">LOG IN</button>
               <p class="float-right mt-3 text-muted">Don't have an account?
               <strong><a href="register.php" class="text-decoration text-dark">Sign Up</a></strong>
             </form>
@@ -37,6 +36,7 @@
               $user = new User;
 
               if(isset($_POST['login'])){
+                // $_SESSION['user_id'] = 25;
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 

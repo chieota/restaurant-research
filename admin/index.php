@@ -1,6 +1,15 @@
 <?php 
 
-    require_once "header/header.php";
+    require_once "header.php";
+
+    require_once "../classes/Restaurant.php";
+    $restaurant = new Restaurant;
+    $countTokyo = $restaurant->countTokyo();
+    $countNewYork = $restaurant->countNewYork();
+    $countMadrid = $restaurant->countMadrid();
+    $countLondon = $restaurant->countLondon();
+    $countParis = $restaurant->countParis();
+    
 
 ?>
 
@@ -13,30 +22,56 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="slider-content_wrap">
-                                    <h1>Discover great restaurants where you are.</h1>
+                                    <h1>Discover great restaurants<br>
+                                        where you are.</h1>
                                     <h5>Let's uncover the best places to eat and drink nearest to you.</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
-                                <form class="form-wrap mt-4">
+                            <form class="form-wrap mt-4" method="get" action="search_result.php">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="text" placeholder="Where are you in?" class="btn-group1">
+                                    <select name="city" id="" class="btn-group1">
+                                            <?php
+
+                                                require_once "../classes/City.php";
+                                                $city = new City;
+                                                $get_cities =$city->selectAll();
+                                                foreach($get_cities as $key => $row){
+                                                    $city_id = $row['city_id'];
+                                                    $city_name = $row['city_name'];
+                                                    echo "<option value='$city_id'>$city_name</option>";
+                                                }
+                                            ?>
+                                        </select>
+
                                         <select name="genre" id="" class="btn-group2">
                                             <?php
 
                                                 require_once "../classes/Genre.php";
                                                 $genre = new Genre;
-                                                $get_genre =$genre->selectAll();
+                                                $get_genres =$genre->selectAll();
                                                 foreach($get_genres as $key => $row){
                                                     $genre_id = $row['genre_id'];
-                                                    $genre_name = $row['ganre_name'];
+                                                    $genre_name = $row['genre_name'];
                                                     echo "<option value='$genre_id'>$genre_name</option>";
                                                 }
                                             ?>
                                         </select>
-                                        <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                                        <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH
+                                        <?php
+                                            // require_once "../classes/Restaurant.php";
+                                            // $restaurant = new Restaurant;
+                                            // $get_restaurant = $restaurant->search($city_id,$genre_id);
+                                            // foreach($get_restaurants as $key =>$row){
+                                            //     $restaurant_id = $row['restaurant_id'];
+                                            //     $restaurant_name = $row['restaurant_mname'];
+                                            //     echo "<option value='$restaurant_id'>$restqaurant_name</option>";
+                                            // }
+                                        ?>
+                                        
+                                        <i class="pe-7s-angle-right"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -63,10 +98,10 @@
                     <div class="find-place-img_wrap">
                         <div class="grid">
                             <figure class="effect-ruby">
-                                <img src="images/find-place1.jpg" height="500px" alt="img13" />
+                                <img src="images/find-place2.jpg" height="500px" alt="img13" />
                                 <figcaption>
-                                    <h5>New York</h5>
-                                    <p>ーーーーーー</p>
+                                    <h5>Tokyo</h5>
+                                    <p><?php echo $countTokyo['countTokyo']?> places</p>
                                 </figcaption>
                             </figure>
                         </div>
@@ -78,10 +113,10 @@
                             <div class="find-place-img_wrap">
                                 <div class="grid">
                                     <figure class="effect-ruby">
-                                        <img src="images/find-place2.jpg" height="220px" alt="img13" />
+                                        <img src="images/find-place1.jpg" height="220px" alt="img13" />
                                         <figcaption>
-                                            <h5>Tokyo</h5>
-                                            <p>----------</p>
+                                            <h5>New York</h5>
+                                            <p><?php echo $countNewYork['countNewYork']?> places</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -95,8 +130,8 @@
                                     <figure class="effect-ruby">
                                         <img src="images/find-place3.jpg" height="250px" alt="img13" />
                                         <figcaption>
-                                            <h5>Madorid</h5>
-                                            <p>------------</p>
+                                            <h5>Madrid</h5>
+                                            <p><?php echo $countMadrid['countMadrid']?> places</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -113,7 +148,7 @@
                                         <img src="images/find-place4.jpg" height="240" alt="img13" />
                                         <figcaption>
                                             <h5>London</h5>
-                                            <p>---------</p>
+                                            <p><?php echo $countLondon['countLondon']?> places</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -128,7 +163,7 @@
                                         <img src="images/find-place5.jpg" height="230px" alt="img13" />
                                         <figcaption>
                                             <h5>Paris</h5>
-                                            <p></p>
+                                            <p><?php echo $countParis['countParis']?> places</p>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -141,7 +176,7 @@
     </section>
     <!--//END FIND PLACES -->
     <!--============================= FEATURED PLACES =============================-->
-    <section class="main-block light-bg">
+    <!-- <section class="main-block light-bg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-5">
@@ -248,15 +283,15 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="featured-btn-wrap">
-                        <a href="#" class="btn btn-danger">VIEW ALL</a>
+                        <a href="restaurants.php" class="btn btn-danger">VIEW ALL</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--//END FEATURED PLACES -->
-    <!--============================= CATEGORIES =============================-->
-    <section class="main-block">
+    <!-- ============================= CATEGORIES =============================-->
+    <!-- <section class="main-block">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-5">
@@ -436,10 +471,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--//END CATEGORIES -->
     <!--============================= ADD LISTING =============================-->
-    <section class="main-block light-bg">
+    <!-- <section class="main-block light-bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -457,7 +492,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--//END ADD LISTING -->
     <!--============================= FOOTER =============================-->
     <footer class="main-block dark-bg">
@@ -466,7 +501,7 @@
                 <div class="col-md-12">
                     <div class="copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright &copy; 2018 Listing. All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                        <p>Copyright &copy; Gourmet Advisor All rights reserved </p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <ul>
                             <li><a href="#"><span class="ti-facebook"></span></a></li>

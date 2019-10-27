@@ -1,6 +1,25 @@
+<?php
+    require_once "../classes/Restaurant.php";
+    require_once "../classes/RestaurantImage.php";
+    require_once "../classes/Review.php";
+
+    $restaurant = new Restaurant;
+    $restaurantImage =new RestaurantImage;
+    $review = new Review;
+
+    $id = $_GET['restaurant_id'];
+    $get_restaurant = $restaurant->selectOne($id);
+    $images = $restaurantImage->selectAllImage($id);
+    $get_review = $review ->selectReviewsByRestaurant($id);
+
+    $topData = $images[0]['image_data'];
+    $topMime = $images[0]['image_type'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -29,6 +48,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/18a4c41afe.js"></script>
 </head>
 
 <body>
@@ -38,53 +58,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html">Listing</a>
+                    <a class="navbar-brand" href="index.php"><i class="fas fa-glass-cheers mr-1"></i>Gourmet Advisor</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="icon-menu"></span>
             </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Explore
-                   <span class="icon-arrow-down"></span>
-                 </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Listing
-                  <span class="icon-arrow-down"></span>
-                </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Pages
-                  <span class="icon-arrow-down"></span>
-                </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Blog</a>
-                                </li>
-                                <li><a href="#" class="btn btn-outline-light top-btn"><span class="ti-plus"></span> Add Listing</a></li>
-                            </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                                <ul class="navbar-nav">
+                               
+                                    <li><a href="manage.php" class="btn btn-outline-light top-btn mx-2"><i class="fas fa-tasks mr-2"></i>Manage</span> </a></li>                                    
+                                    <!-- <li><a href="#" class="btn btn-outline-light top-btn"><i class="fas fa-user-circle mr-2"></i>profile</span> </a></li> -->
+                                    <li><a href="../logout.php" class="btn btn-outline-light top-btn mx-2"><i class="fas fa-user-times mr-2"></i>Logout</span> </a></li>
+                                </ul>
                         </div>
                     </nav>
                 </div>
@@ -96,44 +80,11 @@
     <div>
         <!-- Swiper -->
         <div class="swiper-container">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide2.jpg" class="grid image-link">
-                        <img src="images/reserve-slide2.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide1.jpg" class="grid image-link">
-                        <img src="images/reserve-slide1.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide3.jpg" class="grid image-link">
-                        <img src="images/reserve-slide3.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide1.jpg" class="grid image-link">
-                        <img src="images/reserve-slide1.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide2.jpg" class="grid image-link">
-                        <img src="images/reserve-slide2.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide3.jpg" class="grid image-link">
-                        <img src="images/reserve-slide3.jpg" class="img-fluid" alt="#">
-                    </a>
-                </div>
+            <div class="restaurant-image">
+                <img src="<?php echo 'data:'.$topMime.';base64,'.base64_encode($topData); ?>" width=1800wv; height=500vh;>
             </div>
-            <!-- Add Pagination -->
+
             <div class="swiper-pagination swiper-pagination-white"></div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-button-prev swiper-button-white"></div>
         </div>
     </div>
     <!--//END BOOKING -->
@@ -141,23 +92,28 @@
     <section class="reserve-block">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Tasty Hand-Pulled Noodles</h5>
-                    <p><span>$$$</span>$$</p>
-                    <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p>
+                <div class="col-md-4">
+                    <h5><?php echo $get_restaurant['restaurant_name']?></h5>
+                    <p><span>$$</span><?php echo $get_restaurant['budget']?></p><br>
+                    <p class="reserve-description"><span><?php echo $get_restaurant['genre_name']?></span></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="reserve-seat-block">
                         <div class="reserve-rating">
                             <span>9.5</span>
                         </div>
+                        <div class="reserve-btn">
+                            <div class="featured-btn-wrap">
+                                <a href="edit_restaurant.php?restaurant_id=<?php echo $_GET['restaurant_id']; ?>" class="btn btn-danger">Edit</a>
+                            </div>
+                        </div>
                         <div class="review-btn">
-                            <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                            <a href='add_review.php?restaurant_id=<?php echo $id; ?>' class="btn btn-outline-danger">WRITE A REVIEW</a>
                             <span>34 reviews</span>
                         </div>
                         <div class="reserve-btn">
                             <div class="featured-btn-wrap">
-                                <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
+                                <a href="add_reservation.php?restaurant_id=<?php echo $_GET['restaurant_id']; ?>" class="btn btn-danger">RESERVE A SEAT</a>
                             </div>
                         </div>
                     </div>
@@ -166,18 +122,14 @@
         </div>
     </section>
     <!--//END RESERVE A SEAT -->
-    <!--============================= BOOKING DETAILS =============================-->
+    <!--============================= DETAILS =============================-->
     <section class="light-bg booking-details_wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 responsive-wrap">
                     <div class="booking-checkbox_wrap">
                         <div class="booking-checkbox">
-                            <p>Tasty Hand-Pulled Noodles is a 1950s style diner located in Madison, Wisconsin. Opened in 1946 by Mickey Weidman, and located just across the street from Camp Randall Stadium, it has become a popular game day tradition amongst
-                                many Badger fans. The diner is well known for its breakfast selections, especially the Scrambler, which is a large mound of potatoes, eggs, cheese, gravy, and a patrons’ choice of other toppings.</p>
-                            <p>Mickies has also been featured on “Todd’s Taste of the Town” during one of ESPN’s college football broadcasts. We are one of the best Chinese restaurants in the New York, New York area. We have been recognized for our outstanding
-                                Chinese & Asian cuisine, excellent Chinese menu, and great restaurant specials. We are one of the best Chinese restaurants in the New York, New York area. We have been recognized for our outstanding Chinese & Asian cuisine,
-                                excellent Chinese menu, and great restaurant specials.</p>
+                            <?php echo $get_restaurant['detail'] ?>
                             <hr>
                         </div>
                         <div class="row">
@@ -222,37 +174,38 @@
                         <div class="customer-review_wrap">
                             <div class="customer-img">
                                 <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
-                                <p>Amanda G</p>
-                                <span>35 Reviews</span>
                             </div>
                             <div class="customer-content-wrap">
+                            <?php
+                                   
+                                  
+                                       foreach($get_review as $key => $row){
+                                          $id = $row['review_id'];
+                               ?>
+                            
+                             
+
                                 <div class="customer-content">
                                     <div class="customer-review">
-                                        <h6>Best noodles in the Newyork city</h6>
+                                        <div class="customer-rating customer-rating-red"><?php echo $row['score'];?></div>
+                                        <!-- <span></span>
                                         <span></span>
                                         <span></span>
                                         <span></span>
-                                        <span></span>
-                                        <span class="round-icon-blank"></span>
-                                        <p>Reviewed 2 days ago</p>
+                                        <span class="round-icon-blank"></span> -->
                                     </div>
-                                    <div class="customer-rating">8.0</div>
                                 </div>
-                                <p class="customer-text">I love the noodles here but it is so rare that I get to come here. Tasty Hand-Pulled Noodles is the best type of whole in the wall restaurant. The staff are really nice, and you should be seated quickly. I usually get the
-                                    hand pulled noodles in a soup. House Special #1 is amazing and the lamb noodles are also great. If you want your noodles a little chewier, get the knife cut noodles, which are also amazing. Their dumplings are great
-                                    dipped in their chili sauce.
+                                <p class="customer-text"><?php echo $row['comment'];?>    
+                                <?php
+                                        } ?>
                                 </p>
-                                <p class="customer-text">I love how you can see into the kitchen and watch them make the noodles and you can definitely tell that this is a family run establishment. The prices are are great with one dish maybe being $9. You just have to remember
-                                    to bring cash.
-                                </p>
-                                <ul>
-                                    <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
-                                    <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
-                                    <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
-                                </ul>
-                                <span>28 people marked this review as helpful</span>
-                                <a href="#"><span class="icon-like"></span>Helpful</a>
+
+
+                                <!-- <span>28 people marked this review as helpful</span> -->
+
                             </div>
+
+                         
                         </div>
                         <hr>
                         <div class="customer-review_wrap">
@@ -339,7 +292,7 @@
                 <div class="col-md-12">
                     <div class="copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright &copy; 2018 Listing. All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                        <p>Copyright &copy; Gourmet Advisor All rights reserved <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <ul>
                             <li><a href="#"><span class="ti-facebook"></span></a></li>

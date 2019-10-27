@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -26,61 +27,33 @@
     <script src="https://kit.fontawesome.com/18a4c41afe.js"></script>
 </head>
 
+<style>
+.img-height{
+    height:200px;
+}
+
+</style>
+
 <body>
     <!--============================= HEADER =============================-->
-    <div class="nav-menu">
-        <div class="bg transition">
-            <div class="container-fluid fixed">
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand" href="index.php">Gourmet Advisor</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-menu"></span>
-              </button>
-                            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <div class="dark-bg sticky-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="index.php"><i class="fas fa-glass-cheers mr-1"></i>Gourmet Advisor</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-menu"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fas fa-search"></i>Search</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-utensils"></i>
-                                        Reservation
-                     <span class="icon-arrow-down"></span>
-                   </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Make reservation</a>
-                                            <a class="dropdown-item" href="#">Check your reservation</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-plus"></i>
-                                        Post
-                    <span class="icon-arrow-down"></span>
-                  </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Add Post</a>
-                                            <a class="dropdown-item" href="#">Edit Post</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-list-ul"></i>
-                                        list
-                    <span class="icon-arrow-down"></span>
-                  </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </li>
-                                    <li><a href="#" class="btn btn-outline-light top-btn"><i class="fas fa-user-circle mr-2"></i>profile</span> </a></li>
+                               
+                                    <!-- <li><a href="manage.php" class="btn btn-outline-light top-btn mx-2"><i class="fas fa-tasks mr-2"></i>Manage</span> </a></li>                                     -->
+                                    <!-- <li><a href="#" class="btn btn-outline-light top-btn"><i class="fas fa-user-circle mr-2"></i>profile</span> </a></li> -->
+                                    <li><a href="../logout.php" class="btn btn-outline-light top-btn mx-2"><i class="fas fa-user-times mr-2"></i>Logout</span> </a></li>
                                 </ul>
-                            </div>
-                        </nav>
-                    </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -92,7 +65,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="styled-heading">
-                        <h3>Featured Places</h3>
+                        <h3>Search Result</h3>
                     </div>
                 </div>
             </div>
@@ -112,14 +85,14 @@
                             ?>
                 <div class="col-md-4 featured-responsive">
                         <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid" alt="#">
+                            <a href="detail.php?restaurant_id=<?php echo $row['restaurant_id']; ?>">
+                                <img src="<?php echo 'data:'.$row['image_type'].';base64,'.base64_encode($row['image_data']); ?>" class="img-fluid img-height" alt="#"> 
                                 <span class="featured-rating-orange">6.5</span>
                                 <div class="featured-title-box">
 
 
                                 <h6><?php echo $row['restaurant_name']?></h6>
-                                <p>genre</p> <span>• </span>
+                                <p value= ><?php echo $row['city_name']?></p> <span>• </span>
                                 <p>3 Reviews</p> <span> • </span>
                                 <p><span>$</span><?php echo $row['budget']?></p>
                                 <ul>

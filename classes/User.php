@@ -12,9 +12,9 @@
                 $row = $result->fetch_assoc();
                 $_SESSION['user_id'] = $row['user_id'];
                 if($row['user_type'] == 'admin'){
-                    echo "<script>window.location.replace('admin.users.php');</script>";
+                    echo "<script>window.location.replace('admin/index.php');</script>";
                 }elseif($row['user_type'] == 'user'){
-                    echo "<script>window.location.replace('index.php');</script>";
+                    echo "<script>window.location.replace('user/index.php');</script>";
             }else{
                 echo "Error.";
             }
@@ -41,10 +41,10 @@
 
         public function selectOne($id){
             //query
-            $sql ="SELECT * FROM users WHERE user_id=$id";
+            $sql ="SELECT * FROM users WHERE user_id='$id'";
             //execute or run the query
             $result = $this->conn->query($sql);
-
+            
             if($result){
                 return $result->fetch_assoc();
             }elseif($this->conn->error){
@@ -52,11 +52,12 @@
             }
         }
 
-        public function save($username, $email, $password,$nationality,$comment){
+       
+        public function save($username,$email,$password,$user_type){
 
             $new_password = md5($password);
-            $sql = "INSERT INTO users(username, email, password,gender,nationality,comment)
-                    VALUES('$username','$email','$new_password','$nationality','$comment')";
+            $sql = "INSERT INTO users(username, email, password,user_type)
+                    VALUES('$username','$email','$new_password','$user_type')";
             //execute or run the query
             $result = $this->conn->query($sql);
 
@@ -68,8 +69,9 @@
          }
         
 
-        public function update($id, $username, $email,$nationality,$comment){
-            $sql = "UPDATE users SET username='$username', email='$email', nationality='$nationality',comment='comment' WHERE user_id=$id";
+         public function update($id, $username, $email, $user_type){
+            $sql = "UPDATE users SET username='$username', email='$email',
+                    user_type='$user_type' WHERE user_id=$id";
             //execute or run the query
             $result = $this->conn->query($sql);
             if($result){
@@ -78,6 +80,17 @@
                 echo "Error:".$this->conn->error;
             }
         }
+
+        // public function updateProfle($username,$email,$nationality,$profile_image,$comment){
+        //     $sql = "UPDATE users SET username='$username', email='$email', nationality='$nationality',
+        //            profile_image='$profile_image', user_type='$user_type', comment='$comment' WHERE user_id='$id'";
+        //     $result = $this->conn-<query($sql);
+        //     if($result){
+        //         return true;
+        //     }else{
+        //         echo "Error:".$this->conn->error;
+        //     }
+        // }
         public function delete($id){
             $sql = "DELETE FROM users WHERE user_id=$id";
             //execute or run the query

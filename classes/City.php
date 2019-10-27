@@ -33,6 +33,29 @@
                 echo "Error.".$this->conn->error;
             }
         }
+
+        public function update($id, $city_name){
+            $sql = "UPDATE cities SET city_name='$city_name' WHERE city_id=$id";
+            //execute or run the query
+            $result = $this->conn->query($sql);
+            if($result){
+                return true;
+            }else{
+                echo "Error:".$this->conn->error;
+            }
+        }
+
+        public function delete($id){
+            $sql = "DELETE FROM cities WHERE city_id=$id";
+            //execute or run the query
+            $result = $this->conn->query($sql);
+
+            if($result){
+                return true;
+        }else{
+            echo "Error:".$this->conn->error;
+        }
+    }
     }
 
 ?>
