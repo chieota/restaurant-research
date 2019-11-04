@@ -11,6 +11,7 @@
     $get_restaurant = $restaurant->selectOne($id);
     $images = $restaurantImage->selectAllImage($id);
     $get_review = $review ->selectReviewsByRestaurant($id);
+    $get_avereview = $review ->averageScore($id);
 
     $topData = $images[0]['image_data'];
     $topMime = $images[0]['image_type'];
@@ -100,7 +101,7 @@
                 <div class="col-md-8">
                     <div class="reserve-seat-block">
                         <div class="reserve-rating">
-                            <span>9.5</span>
+                            <span><?php echo $get_avereview['score']?></span>
                         </div>
                         <div class="reserve-btn">
                             <div class="featured-btn-wrap">

@@ -88,6 +88,16 @@
             echo "Error:".$this->conn->error;
         }
     }
+    public function averageScore($id){
+        $sql = "SELECT restaurant_id,AVG(score) as average from review group by restaurant_id=$id";
+        $result = $this->conn->query($sql);
+        if($result){
+            return true;
+    }else{
+        echo "Error:".$this->conn->error;
+    }
+    }
+    
 }
     
 ?>
